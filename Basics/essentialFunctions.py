@@ -17,19 +17,20 @@ cv.imshow('Gray', gray)
 
 
 """ BLUR """
-# adding noise or blurring the image - less than 5
+# adding noise or blurring the image - less than 5, cv.BORDER_DEFAULT refers to std deviation in x direction
 blur = cv.GaussianBlur(img, (5, 5), cv.BORDER_DEFAULT)
 cv.imshow('blur', blur)
 
 
 """ EDGE CASCASE - CANNY """
+""" Edges are color variation/diminishing of an object in image """
 # finding the edge cascade using canny algo
 canny = cv.Canny(blur, 125, 175)
 cv.imshow('Canny', canny)
 
 
 """ DILATION """
-# increase number of pixels around the boundary
+# increase number of pixels around the boundary -(7, 7) is the kernel window size to slide
 dilated = cv.dilate(canny, (7, 7), iterations = 3)
 cv.imshow('Dilated', dilated)
 
@@ -59,6 +60,7 @@ cv.imshow('adaptive Thresholding', adaptive_thresh)
 
 
 """ CONTOURS """
+""" boundaries of object not including it """
 # finding the contours of the image. It needs to undergo threshold or canny before contour finding
 # RETR_TREE - takes into account all the parent and child contours and its relationship
 contours, hierarchy = cv.findContours(adaptive_thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)

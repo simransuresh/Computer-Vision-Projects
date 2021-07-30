@@ -14,7 +14,7 @@ blank[200:300, 300:400] = 255, 0, 255
 
 
 """ RECTANGLE """
-# start point, dimensions, color, thickness of rectangle
+# start point, dimensions, color, thickness of rectangle - negative one fills the image
 cv.rectangle(blank, (0, 0), (blank.shape[1]//2, blank.shape[0]//2), (0, 255, 0), thickness=5)
 
 
@@ -35,5 +35,6 @@ cv.putText(blank, 'Hello, my name is Simran!!!', (0,100), cv.FONT_HERSHEY_TRIPLE
 
 # display the canvas
 cv.imshow('blank', blank)
+
 
 cv.waitKey(0)
